@@ -1,0 +1,74 @@
+package com.qa.opencart.tests;
+
+
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+import org.testng.asserts.Assertion;
+import org.testng.Assert;
+
+import com.qa.opencart.base.BaseTest;
+
+public class RegisterPageTest extends BaseTest {
+
+	@BeforeClass
+	public void registerPageSetup() {
+
+		registerpage = loginpage.navigateToRegisterPage();
+
+	}
+
+	@DataProvider
+
+	public Object[][] userRegistartionData() {
+		return new Object[][] { { "chris", "folder", "ottomotors12@qa.com", "9256272883", "automation@123", "no" }
+
+		};
+
+	}
+
+	@Test(dataProvider = "userRegistartionData")
+
+	public void userRegistrationTest(String firstname, String lastname, String email, String telephone, String pwd,
+			String subscribe) {
+
+		Boolean expectedresult = registerpage.userRegistration(firstname, lastname, email, telephone, pwd, subscribe);
+		Assert.assertTrue(expectedresult);
+		
+	}
+
+	@DataProvider
+
+	public Object[][] userEmailFormatValidation() {
+		return new Object[][] { { "chris", "folder", "chris1234@qa", "9256272883", "automation@123", "no" }
+
+		};
+	}
+
+	@Test(dataProvider = "userEmailFormatValidation")
+	public void emailFieldValidationTestForDotCOM(String firstname, String lastname, String email, String telephone,
+			String pwd, String subscribe) {
+
+		Boolean expectedresult = registerpage.validateEmailIdFormatForDotCom(firstname, lastname, email, telephone, pwd,
+				subscribe);
+		Assert.assertTrue(expectedresult);
+	}
+
+	@DataProvider
+
+	public Object[][] userEmailFormatValidationForATCharacter() {
+		return new Object[][] { { "chris", "folder", "chris1234", "9256272883", "automation@123", "no" }
+
+		};
+	}
+
+	@Test(dataProvider = "userEmailFormatValidationForATCharacter")
+	public void emailFieldValidationTestForATCharcter(String firstname, String lastname, String email, String telephone,
+			String pwd, String subscribe) {
+
+		Boolean expectedresult = registerpage.validateEmailIdFormatForAtCharcter(firstname, lastname, email, telephone,
+				pwd, subscribe);
+		Assert.assertTrue(expectedresult);
+	}
+
+}
