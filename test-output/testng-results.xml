@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="8" total="9" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-05-04T18:23:42 EDT" name="Default suite" finished-at="2025-05-04T18:24:02 EDT" duration-ms="19349">
+  <suite started-at="2025-05-04T19:25:22 EDT" name="Default suite" finished-at="2025-05-04T19:25:41 EDT" duration-ms="18885">
     <groups>
     </groups>
-    <test started-at="2025-05-04T18:23:42 EDT" name="Default test" finished-at="2025-05-04T18:24:02 EDT" duration-ms="19349">
-      <class name="com.qa.opencart.tests.ProductInfoPageTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.qa.opencart.tests.ProductInfoPageTest@5c534b5b]" started-at="2025-05-04T18:23:42 EDT" name="setup" finished-at="2025-05-04T18:23:49 EDT" duration-ms="6151" status="PASS">
+    <test started-at="2025-05-04T19:25:22 EDT" name="Default test" finished-at="2025-05-04T19:25:41 EDT" duration-ms="18885">
+      <class name="com.qa.opencart.tests.CartInfoPageTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.qa.opencart.tests.CartInfoPageTest@27b45ea]" started-at="2025-05-04T19:25:22 EDT" name="setup" finished-at="2025-05-04T19:25:28 EDT" duration-ms="5603" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method is-config="true" signature="productInfoPageSetup()[pri:0, instance:com.qa.opencart.tests.ProductInfoPageTest@5c534b5b]" started-at="2025-05-04T18:23:49 EDT" name="productInfoPageSetup" finished-at="2025-05-04T18:23:53 EDT" duration-ms="4230" status="PASS">
+        <test-method is-config="true" signature="cartInfoPageSetup()[pri:0, instance:com.qa.opencart.tests.CartInfoPageTest@27b45ea]" started-at="2025-05-04T19:25:28 EDT" name="cartInfoPageSetup" finished-at="2025-05-04T19:25:32 EDT" depends-on-methods="com.qa.opencart.base.BaseTest.setup" duration-ms="4205" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- productInfoPageSetup -->
-        <test-method signature="cartInfoPageURLTest()[pri:2147483647, instance:com.qa.opencart.tests.ProductInfoPageTest@5c534b5b]" started-at="2025-05-04T18:23:53 EDT" name="cartInfoPageURLTest" finished-at="2025-05-04T18:24:01 EDT" duration-ms="8567" status="PASS">
+        </test-method> <!-- cartInfoPageSetup -->
+        <test-method signature="checkoutButtonExistTest()[pri:0, instance:com.qa.opencart.tests.CartInfoPageTest@27b45ea]" started-at="2025-05-04T19:25:32 EDT" name="checkoutButtonExistTest" finished-at="2025-05-04T19:25:41 EDT" duration-ms="8701" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- cartInfoPageURLTest -->
-        <test-method is-config="true" signature="attachScreeshot(org.testng.ITestResult)[pri:0, instance:com.qa.opencart.tests.ProductInfoPageTest@5c534b5b]" started-at="2025-05-04T18:24:02 EDT" name="attachScreeshot" finished-at="2025-05-04T18:24:02 EDT" duration-ms="3" status="PASS">
+        </test-method> <!-- checkoutButtonExistTest -->
+        <test-method is-config="true" signature="attachScreeshot(org.testng.ITestResult)[pri:0, instance:com.qa.opencart.tests.CartInfoPageTest@27b45ea]" started-at="2025-05-04T19:25:41 EDT" name="attachScreeshot" finished-at="2025-05-04T19:25:41 EDT" duration-ms="2" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=cartInfoPageURLTest status=SUCCESS method=ProductInfoPageTest.cartInfoPageURLTest()[pri:2147483647, instance:com.qa.opencart.tests.ProductInfoPageTest@5c534b5b] output={null}]]]>
+                <![CDATA[[TestResult name=checkoutButtonExistTest status=SUCCESS method=CartInfoPageTest.checkoutButtonExistTest()[pri:0, instance:com.qa.opencart.tests.CartInfoPageTest@27b45ea] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- attachScreeshot -->
-        <test-method is-config="true" signature="teardown()[pri:0, instance:com.qa.opencart.tests.ProductInfoPageTest@5c534b5b]" started-at="2025-05-04T18:24:02 EDT" name="teardown" finished-at="2025-05-04T18:24:02 EDT" duration-ms="118" status="PASS">
+        <test-method is-config="true" signature="teardown()[pri:0, instance:com.qa.opencart.tests.CartInfoPageTest@27b45ea]" started-at="2025-05-04T19:25:41 EDT" name="teardown" finished-at="2025-05-04T19:25:41 EDT" duration-ms="97" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-      </class> <!-- com.qa.opencart.tests.ProductInfoPageTest -->
+      </class> <!-- com.qa.opencart.tests.CartInfoPageTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -15,6 +15,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
@@ -114,7 +115,8 @@ public class ElementUtil {
 		System.out.println("Element Count ==>" + getElements(locator).size());
 		return getElements(locator).size();
 	}
-@Step("Locator is passed {0}")
+
+	@Step("Locator is passed {0}")
 	public List<String> getElementTextList(By locator) {
 		List<WebElement> webele = getElements(locator);
 		List<String> webEleText = new ArrayList<String>();
@@ -351,6 +353,7 @@ public class ElementUtil {
 	public WebElement waitForElementPresence(By locator, int timeout) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
 		WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+
 		elementhighlight(element);
 		return element;
 
@@ -498,6 +501,7 @@ public class ElementUtil {
 
 	public Boolean isElementVisibleWithText(By locator, int timeout, String value) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+
 		return wait.until(ExpectedConditions.textToBePresentInElementLocated(locator, value));
 
 	}
