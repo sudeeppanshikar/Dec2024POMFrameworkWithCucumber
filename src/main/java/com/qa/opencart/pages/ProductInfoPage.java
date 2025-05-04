@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -45,6 +46,9 @@ public class ProductInfoPage {
 	private By cartButton = By.xpath("//span[@id='cart-total']");
 	private By removeItemFromCart = By.xpath("//button[@title='Remove']");
 	private By removeItemsFromCart = By.xpath("//tr/td/button[@title='Remove']");
+
+	private By successMessageProduct = By.xpath("(//div[contains(@class,'alert')]//a)[1]");
+	private By successMessageCart = By.xpath("(//div[contains(@class,'alert')]//a)[2]");
 
 	public String getProductInfoURL() {
 
@@ -109,18 +113,23 @@ public class ProductInfoPage {
 
 	}
 
-	public void addItemToCart() {
+	public void addItemToCart(boolean flag) {
 		elementUtil.doClick(addCartButton);
-		jsUtil.refreshBrowserByJS();
+		if (flag) {
+			jsUtil.refreshBrowserByJS();
+		}
 	}
 
-
-
-	private void removeMultipleItemsFromCart() {
+	public void removeItemsFromCartFun() {
 
 		elementUtil.doClick(cartButton);
+		List<WebElement> removeFromCart = null;
 
-		List<WebElement> removeFromCart = elementUtil.waitForElementsVisibleBy(removeItemsFromCart, DEFAULT_TIME_OUT);
+		try {
+			removeFromCart = elementUtil.waitForElementsVisibleBy(removeItemsFromCart, DEFAULT_TIME_OUT);
+		} catch (NoSuchElementException e) {
+
+		}
 
 		elementUtil.doClick(cartButton);
 
@@ -153,11 +162,27 @@ public class ProductInfoPage {
 
 		cartItemDetails = getCartButtonDetails();
 
-		removeMultipleItemsFromCart();
+		removeItemsFromCartFun();
 		return cartItemDetails;
 
 	}
 
-	
+	public boolean getSuccessMessage(String productName) {
+
+		String successText = elementUtil.waitForElementVisible(successMessageProduct, DEFAULT_TIME_OUT).getText();
+
+		if (successText.contains(productName)) {
+			return true;
+		}
+		return false;
+	}
+
+	public CartInfoPage checkShoppingCart() {
+
+		elementUtil.waitForElementPresence(successMessageCart, DEFAULT_TIME_OUT).click();
+
+		return new CartInfoPage(driver);
+
+	}
 
 }

@@ -56,7 +56,7 @@ public class BaseTest {
 	@AfterTest
 	public void teardown() {
 
-	df.driverQuit();
+//	df.driverQuit();
 	}
 
 }

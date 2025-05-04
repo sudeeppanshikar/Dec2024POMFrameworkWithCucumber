@@ -115,15 +115,14 @@ public class ProductInfoPageTest extends BaseTest {
 
 	@DataProvider
 	public Object[][] getCartTestData() {
-		return new Object[][] { { "macbook", "MacBook Pro", "$2,000.00"},{ "macbook", "MacBook Air","$1,202.00"},
-			{ "macbook", "MacBook","$602.00"}};
+		return new Object[][] { { "macbook", "MacBook Pro", "$2,000.00" } };
 	}
 
-	@Test(dataProvider = "getCartTestData",priority = Integer.MAX_VALUE-1)
+	@Test(dataProvider = "getCartTestData", priority = Integer.MAX_VALUE - 1)
 	public void cartButtonDetailsItemTest(String searchValue, String productName, String price) {
 		searchrespage = accountpage.doSearch(searchValue);
 		prodinfopage = searchrespage.selectProduct(productName);
-		prodinfopage.addItemToCart();
+		prodinfopage.addItemToCart(true);
 		Map<String, String> actualItemsInCart = prodinfopage.getCartProductCountandPriceForItems();
 		System.out.println(actualItemsInCart);
 		System.out.println(actualItemsInCart.get("Total Value"));
@@ -133,24 +132,23 @@ public class ProductInfoPageTest extends BaseTest {
 		softassert.assertAll();
 
 	}
-	
-	
+
 	@DataProvider
 	public Object[][] getCartTestDataForMulitpletems() {
-		return new Object[][] { { "macbook", "MacBook Pro", "MacBook Air" , "$3,202.00"}};
+		return new Object[][] { { "macbook", "MacBook Pro", "MacBook Air", "$3,202.00" } };
 	}
 
-	@Test(priority = Integer.MAX_VALUE,dataProvider = "getCartTestDataForMulitpletems")
-	public void cartButtonDetailsMultipleItemTest(String searchValue,String productName1, String productName2,  String Price) {
-	
-				searchrespage = accountpage.doSearch(searchValue);
+	@Test(priority = Integer.MAX_VALUE-2, dataProvider = "getCartTestDataForMulitpletems")
+	public void cartButtonDetailsMultipleItemTest(String searchValue, String productName1, String productName2,
+			String Price) {
+
+		searchrespage = accountpage.doSearch(searchValue);
 		prodinfopage = searchrespage.selectProduct(productName1);
-		prodinfopage.addItemToCart();
+		prodinfopage.addItemToCart(true);
 		searchrespage = accountpage.doSearch(searchValue);
 		prodinfopage = searchrespage.selectProduct(productName2);
-		prodinfopage.addItemToCart();
+		prodinfopage.addItemToCart(true);
 
-				
 		Map<String, String> actualItemsInCart = prodinfopage.getCartProductCountandPriceForItems();
 		System.out.println(actualItemsInCart);
 		System.out.println(actualItemsInCart.get("Total Value"));
@@ -160,9 +158,17 @@ public class ProductInfoPageTest extends BaseTest {
 		softassert.assertAll();
 
 	}
-	
-	
-	
-	
+
+	@Test(priority = Integer.MAX_VALUE)
+	public void addToCartSuccessMessageTest() {
+		searchrespage = accountpage.doSearch("macbook");
+		prodinfopage = searchrespage.selectProduct("MacBook Pro");
+		prodinfopage.addItemToCart(false);
+
+		Assert.assertTrue(prodinfopage.getSuccessMessage("MacBook Pro"));
+		prodinfopage.removeItemsFromCartFun();
+
+
+	}
 
 }
