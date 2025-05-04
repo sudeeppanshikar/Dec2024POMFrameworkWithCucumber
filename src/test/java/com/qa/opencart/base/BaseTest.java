@@ -13,6 +13,7 @@ import org.testng.annotations.Parameters;
 import com.aventstack.chaintest.plugins.ChainTestListener;
 import com.qa.opencart.factory.DriverFactory;
 import com.qa.opencart.pages.AccountPage;
+import com.qa.opencart.pages.CartInfoPage;
 import com.qa.opencart.pages.LoginPage;
 import com.qa.opencart.pages.ProductInfoPage;
 import com.qa.opencart.pages.RegisterPage;
@@ -29,6 +30,7 @@ public class BaseTest {
 	protected SearchResultsPage searchrespage;
 	protected ProductInfoPage prodinfopage;
 	protected RegisterPage registerpage;
+	protected CartInfoPage cartinfopage;
 	WebDriver driver;
 	protected Properties prop;
 	@Step("Intializing the Driver through Driver Factory")
@@ -56,7 +58,7 @@ public class BaseTest {
 	@AfterTest
 	public void teardown() {
 
-//	df.driverQuit();
+df.driverQuit();
 	}
 
 }

@@ -17,6 +17,7 @@ public class AppConstants {
 	public final static String LOGIN_PAGE_FRACTIONAL_URL = "?route=account/login";
 	public static final String HOME_PAGE_FRACTIONAL_URL = "?route=account/account";
 	public static final String RESULTS_SEARCH_PAGE_FRACTIONAL_URL = "?route=product/search";
+	public static final String CART_INFO_FRACTIONAL_URL = "route=checkout/cart";
 
 	public static final String PRODUCT_INFO_PAGE_FRACTIONAL_URL = "?route=product/product";
 

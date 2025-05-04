@@ -177,7 +177,7 @@ public class ProductInfoPage {
 		return false;
 	}
 
-	public CartInfoPage checkShoppingCart() {
+	public CartInfoPage navigateShoppingCartPage() {
 
 		elementUtil.waitForElementPresence(successMessageCart, DEFAULT_TIME_OUT).click();
 
