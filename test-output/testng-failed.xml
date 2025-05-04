@@ -5,10 +5,18 @@
     <classes>
       <class name="com.qa.opencart.tests.ProductInfoPageTest">
         <methods>
+          <include name="addToCartSuccessMessageTest"/>
+          <include name="cartInfoPageURLTest"/>
           <include name="productInfoPageSetup"/>
+          <include name="productnfoTitleTest"/>
+          <include name="productInfoImageTest"/>
           <include name="attachScreeshot"/>
-          <include name="cartButtonDetailsMultipleItemTest" invocation-numbers="0"/>
           <include name="setup"/>
+          <include name="cartButtonDetailsMultipleItemTest"/>
+          <include name="cartButtonDetailsItemTest"/>
+          <include name="productInfoHeaderTest"/>
+          <include name="productInfoURLTest" invocation-numbers="2"/>
+          <include name="getProductFullDeatilsTest"/>
           <include name="teardown"/>
         </methods>
       </class> <!-- com.qa.opencart.tests.ProductInfoPageTest -->

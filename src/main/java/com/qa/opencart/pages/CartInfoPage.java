@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import com.qa.opencart.utils.ElementUtil;
 import com.qa.opencart.utils.JavaScriptUtil;
+import static com.qa.opencart.constants.AppConstants.*;
 
 public class CartInfoPage {
 	
@@ -16,6 +17,14 @@ public class CartInfoPage {
 		elementUtil = new ElementUtil(driver);
 		jsUtil = new JavaScriptUtil(driver);
 
+	}
+	
+	
+	public String getCartInfoPageURL () {
+		
+		return elementUtil.waitforURLContains(CART_INFO_FRACTIONAL_URL, DEFAULT_TIME_OUT);
+		
+		
 	}
 
 }
