@@ -14,7 +14,7 @@ public class CartInfoPageTest extends BaseTest {
 		accountpage = loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 2)
 	public void checkoutButtonExistTest() {
 		
 		String productName = "MacBook Pro";
