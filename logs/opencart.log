@@ -1,2 +1,2 @@
-2025-05-05 00:21:26 INFO  DriverFactory:44 - Browser will be launched :chrome
-2025-05-05 00:21:26 INFO  DriverFactory:45 - Properties file are : {headless=false, highlight=true, password=Canada@123, browser=chrome, incognito=false, URL=https://naveenautomationlabs.com/opencart/index.php?route=account/login, username=rob@motors.com}
+2025-05-05 00:40:57 INFO  DriverFactory:44 - Browser will be launched :chrome
+2025-05-05 00:40:57 INFO  DriverFactory:45 - Properties file are : {headless=false, highlight=true, password=Canada@123, browser=chrome, incognito=false, URL=https://naveenautomationlabs.com/opencart/index.php?route=account/login, username=rob@motors.com}

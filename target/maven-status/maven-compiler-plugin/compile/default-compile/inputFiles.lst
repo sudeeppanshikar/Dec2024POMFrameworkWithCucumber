@@ -2,6 +2,7 @@
 /home/spanshikar/Documents/Dec2024POMFramework/src/main/java/com/qa/opencart/errors/AppErrors.java
 /home/spanshikar/Documents/Dec2024POMFramework/src/main/java/com/qa/opencart/pages/SearchResultsPage.java
 /home/spanshikar/Documents/Dec2024POMFramework/src/main/java/com/qa/opencart/pages/LoginPage.java
+/home/spanshikar/Documents/Dec2024POMFramework/src/main/java/com/qa/opencart/pages/CartInfoPage.java
 /home/spanshikar/Documents/Dec2024POMFramework/src/main/java/com/qa/opencart/pages/ProductInfoPage.java
 /home/spanshikar/Documents/Dec2024POMFramework/src/main/java/com/qa/opencart/constants/AppConstants.java
 /home/spanshikar/Documents/Dec2024POMFramework/src/main/java/com/qa/opencart/utils/ElementUtil.java

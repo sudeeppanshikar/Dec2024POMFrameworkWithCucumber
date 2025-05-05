@@ -171,6 +171,7 @@ public class ProductInfoPageTest extends BaseTest {
 	}
 
 	@Test(priority = Integer.MAX_VALUE)
+	//new addition
 	public void cartInfoPageURLTest() {
 
 		searchrespage = accountpage.doSearch("macbook");
