@@ -38,6 +38,8 @@ public class AccountPageTest extends BaseTest {
 
 	}
 
+	//Adding new function
+	
 	@Test
 	public void acctPageHeadersTest() {
 		List<String> accPageHeader = accountpage.getAccountPageHeader();
