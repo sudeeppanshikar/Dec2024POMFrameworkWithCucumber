@@ -1,10 +1,13 @@
 package com.qa.opencart.tests;
 
-
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.Assertion;
+
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 import org.testng.Assert;
 
 import com.qa.opencart.base.BaseTest;
@@ -18,10 +21,18 @@ public class RegisterPageTest extends BaseTest {
 
 	}
 
+	public String generateRandomEmailid() {
+		LocalTime now = LocalTime.now();
+
+		String randomEmailId = now + "@gmail.com";
+		randomEmailId = randomEmailId.replace(":", "");
+		return randomEmailId;
+	}
+
 	@DataProvider
 
 	public Object[][] userRegistartionData() {
-		return new Object[][] { { "chris", "folder", "ottomotors12@qa.com", "9256272883", "automation@123", "no" }
+		return new Object[][] { { "chris", "folder", generateRandomEmailid(), "9256272883", "automation@123", "no" }
 
 		};
 
@@ -34,7 +45,7 @@ public class RegisterPageTest extends BaseTest {
 
 		Boolean expectedresult = registerpage.userRegistration(firstname, lastname, email, telephone, pwd, subscribe);
 		Assert.assertTrue(expectedresult);
-		
+
 	}
 
 	@DataProvider

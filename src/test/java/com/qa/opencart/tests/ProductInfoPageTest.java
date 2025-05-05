@@ -138,7 +138,7 @@ public class ProductInfoPageTest extends BaseTest {
 		return new Object[][] { { "macbook", "MacBook Pro", "MacBook Air", "$3,202.00" } };
 	}
 
-	@Test(priority = Integer.MAX_VALUE - 2, dataProvider = "getCartTestDataForMulitpletems")
+	@Test(priority = Integer.MAX_VALUE - 1, dataProvider = "getCartTestDataForMulitpletems")
 	public void cartButtonDetailsMultipleItemTest(String searchValue, String productName1, String productName2,
 			String Price) {
 
@@ -159,7 +159,7 @@ public class ProductInfoPageTest extends BaseTest {
 
 	}
 
-	@Test(priority = Integer.MAX_VALUE - 1)
+	@Test(priority = Integer.MAX_VALUE - 2)
 	public void addToCartSuccessMessageTest() {
 		searchrespage = accountpage.doSearch("macbook");
 		prodinfopage = searchrespage.selectProduct("MacBook Pro");
@@ -182,6 +182,7 @@ public class ProductInfoPageTest extends BaseTest {
 		String cartInfoPageTitle = cartinfopage.getCartInfoPageURL();
 		System.out.println(cartInfoPageTitle);
 		Assert.assertTrue(cartInfoPageTitle.contains(CART_INFO_FRACTIONAL_URL));
+		prodinfopage.removeItemsFromCartFun();
 
 	}
 

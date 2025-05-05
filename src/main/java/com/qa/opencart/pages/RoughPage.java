@@ -1,6 +1,8 @@
 package com.qa.opencart.pages;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -24,21 +26,27 @@ public class RoughPage {
 
 		// ChromeOptions co = new ChromeOptions();
 
+		
+		System.out.println(generateRandomEmailid());
+		
+		
 		// co.addArguments("--incognito");
-
-		 driver = new ChromeDriver();
-		 js = (JavascriptExecutor) driver;
-
+		/*
+		 * driver = new ChromeDriver(); js = (JavascriptExecutor) driver;
+		 */
 		 
 		 
 	//	List<WebElement> removeFromCart;
-		driver.get("https://naveenautomationlabs.com/opencart/index.php?route=product/product&product_id=45&search=macbook");
-
-		driver.manage().window().maximize();
-
-		Thread.sleep(1000);
-		driver.findElement(By.id("button-cart")).click();
-		 Thread.sleep(1000);
+	/*
+	 * driver.get(
+	 * "https://naveenautomationlabs.com/opencart/index.php?route=product/product&product_id=45&search=macbook"
+	 * );
+	 * 
+	 * driver.manage().window().maximize();
+	 * 
+	 * Thread.sleep(1000); driver.findElement(By.id("button-cart")).click();
+	 * Thread.sleep(1000);
+	 */
 		 
 			
 		// ele = driver.findElement(By.name("search"));
@@ -47,10 +55,14 @@ public class RoughPage {
 
 	//	ele.click();
 		
-		WebElement ele =  driver.findElement(By.xpath("(//div[contains(@class,'alert')]//a)[1]"));
-		flash(ele);
-		
-		System.out.println(driver.findElement(By.xpath("//div[contains(@class,'alert')]")).getText());
+	/*
+	 * WebElement ele =
+	 * driver.findElement(By.xpath("(//div[contains(@class,'alert')]//a)[1]"));
+	 * flash(ele);
+	 * 
+	 * System.out.println(driver.findElement(By.xpath(
+	 * "//div[contains(@class,'alert')]")).getText());
+	 */
 		
 		//Actions action = new Actions(driver);	
 		
@@ -151,24 +163,27 @@ public class RoughPage {
 
 	}
 	
-	public static void flash(WebElement element) {
-		String bgcolor = element.getCssValue("backgroundColor");// blue
-		for (int i = 0; i < 6; i++) {
-			changeColor("rgb(0,400,0)", element);// green
-			changeColor(bgcolor, element);// blue
-		}
+	/*
+	 * public static void flash(WebElement element) { String bgcolor =
+	 * element.getCssValue("backgroundColor");// blue for (int i = 0; i < 6; i++) {
+	 * changeColor("rgb(0,400,0)", element);// green changeColor(bgcolor,
+	 * element);// blue } }
+	 * 
+	 * private static void changeColor(String color, WebElement element) {
+	 * js.executeScript("arguments[0].style.backgroundColor = '" + color + "'",
+	 * element);// GBGBGBGBGBGB
+	 * 
+	 * try { Thread.sleep(10); } catch (InterruptedException e) { } }
+	 */
+	
+	
+	public static String generateRandomEmailid() {
+		  LocalTime now = LocalTime.now();
+				  
+		  String randomEmailId = now+"@gmail.com";
+				  randomEmailId = 	randomEmailId.replace(":", "");
+				  return randomEmailId;
 	}
 
-	private static void changeColor(String color, WebElement element) {
-		js.executeScript("arguments[0].style.backgroundColor = '" + color + "'", element);// GBGBGBGBGBGB
-
-		try {
-			Thread.sleep(10);
-		} catch (InterruptedException e) {
-		}
-	}
-	
-	
-	
 
 }
