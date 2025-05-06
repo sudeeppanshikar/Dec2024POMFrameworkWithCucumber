@@ -33,5 +33,9 @@ public class CartInfoPage {
 		return elementUtil.doElementdisplayed(checkoutButton);
 		
 	}
+	
+	public void getTotalPrice() {
+		
+	}
 
 }
