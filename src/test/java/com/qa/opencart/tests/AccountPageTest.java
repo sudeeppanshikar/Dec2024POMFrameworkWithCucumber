@@ -12,6 +12,10 @@ import org.testng.annotations.Test;
 
 import com.qa.opencart.base.BaseTest;
 
+import io.qameta.allure.Epic;
+
+@Epic("EPIC-02 - Account Page Behaviour and Validation Message")
+
 public class AccountPageTest extends BaseTest {
 
 	@BeforeClass

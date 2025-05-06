@@ -14,7 +14,7 @@ import org.openqa.selenium.WebElement;
 
 import com.qa.opencart.utils.ElementUtil;
 
-public class SearchResultsPage extends ResultsPage {
+public class SearchResultsPage {
 
 	WebDriver driver;
 	ElementUtil elementUtil;

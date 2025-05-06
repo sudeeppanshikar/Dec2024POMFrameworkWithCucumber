@@ -18,69 +18,71 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RoughPage {
 
-	static	WebDriver driver;
+	static WebDriver driver;
 	static JavascriptExecutor js;
 	static WebElement ele;
-	
+
 	public static void main(String[] args) throws InterruptedException {
 
-		// ChromeOptions co = new ChromeOptions();
+		ChromeOptions co = new ChromeOptions();
 
-		
 		System.out.println(generateRandomEmailid());
+
+		co = co.addArguments("--incognito");
+
+		ThreadLocal<WebDriver> tldriver = new ThreadLocal<WebDriver>();
+
+		tldriver.set(new ChromeDriver(co));
+
+		driver = tldriver.get();
+
+		tldriver.get().get(null);
 		
 		
-		// co.addArguments("--incognito");
 		/*
 		 * driver = new ChromeDriver(); js = (JavascriptExecutor) driver;
 		 */
-		 
-		 
-	//	List<WebElement> removeFromCart;
-	/*
-	 * driver.get(
-	 * "https://naveenautomationlabs.com/opencart/index.php?route=product/product&product_id=45&search=macbook"
-	 * );
-	 * 
-	 * driver.manage().window().maximize();
-	 * 
-	 * Thread.sleep(1000); driver.findElement(By.id("button-cart")).click();
-	 * Thread.sleep(1000);
-	 */
-		 
-			
+
+		// List<WebElement> removeFromCart;
+		/*
+		 * driver.get(
+		 * "https://naveenautomationlabs.com/opencart/index.php?route=product/product&product_id=45&search=macbook"
+		 * );
+		 * 
+		 * driver.manage().window().maximize();
+		 * 
+		 * Thread.sleep(1000); driver.findElement(By.id("button-cart")).click();
+		 * Thread.sleep(1000);
+		 */
+
 		// ele = driver.findElement(By.name("search"));
-		 
-	//	ele = driver.findElement(By.xpath("//span[@id='cart-total']")); 
 
-	//	ele.click();
-		
-	/*
-	 * WebElement ele =
-	 * driver.findElement(By.xpath("(//div[contains(@class,'alert')]//a)[1]"));
-	 * flash(ele);
-	 * 
-	 * System.out.println(driver.findElement(By.xpath(
-	 * "//div[contains(@class,'alert')]")).getText());
-	 */
-		
-		//Actions action = new Actions(driver);	
-		
-	//	action.moveToElement(check).build().perform();
-		
-		
-		
-		
-		
+		// ele = driver.findElement(By.xpath("//span[@id='cart-total']"));
 
-	//	List<WebElement> addcart = driver.findElements(By.xpath("//button[contains(@onclick,'cart.add')]"));
-		
-	/*
-	 * WebElement addcart =
-	 * driver.findElement(By.xpath("//button[contains(@onclick,'cart.add')]"));
-	 * addcart.click(); Thread.sleep(1000); addcart.click(); Thread.sleep(1000);
-	 * addcart.click(); Thread.sleep(1000);
-	 */
+		// ele.click();
+
+		/*
+		 * WebElement ele =
+		 * driver.findElement(By.xpath("(//div[contains(@class,'alert')]//a)[1]"));
+		 * flash(ele);
+		 * 
+		 * System.out.println(driver.findElement(By.xpath(
+		 * "//div[contains(@class,'alert')]")).getText());
+		 */
+
+		// Actions action = new Actions(driver);
+
+		// action.moveToElement(check).build().perform();
+
+		// List<WebElement> addcart =
+		// driver.findElements(By.xpath("//button[contains(@onclick,'cart.add')]"));
+
+		/*
+		 * WebElement addcart =
+		 * driver.findElement(By.xpath("//button[contains(@onclick,'cart.add')]"));
+		 * addcart.click(); Thread.sleep(1000); addcart.click(); Thread.sleep(1000);
+		 * addcart.click(); Thread.sleep(1000);
+		 */
 		/*
 		 * for (WebElement add : addcart) { add.click(); Thread.sleep(2000); }
 		 */
@@ -162,7 +164,7 @@ public class RoughPage {
 //		
 
 	}
-	
+
 	/*
 	 * public static void flash(WebElement element) { String bgcolor =
 	 * element.getCssValue("backgroundColor");// blue for (int i = 0; i < 6; i++) {
@@ -175,15 +177,13 @@ public class RoughPage {
 	 * 
 	 * try { Thread.sleep(10); } catch (InterruptedException e) { } }
 	 */
-	
-	
-	public static String generateRandomEmailid() {
-		  LocalTime now = LocalTime.now();
-				  
-		  String randomEmailId = now+"@gmail.com";
-				  randomEmailId = 	randomEmailId.replace(":", "");
-				  return randomEmailId;
-	}
 
+	public static String generateRandomEmailid() {
+		LocalTime now = LocalTime.now();
+
+		String randomEmailId = now + "@gmail.com";
+		randomEmailId = randomEmailId.replace(":", "");
+		return randomEmailId;
+	}
 
 }

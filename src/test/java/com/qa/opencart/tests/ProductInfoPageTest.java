@@ -12,6 +12,9 @@ import org.testng.asserts.SoftAssert;
 
 import com.qa.opencart.base.BaseTest;
 
+import io.qameta.allure.Epic;
+
+@Epic("EPIC-05 - Product Info page behaviour and Validations ")
 public class ProductInfoPageTest extends BaseTest {
 
 	// String productSearch;

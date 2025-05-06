@@ -6,6 +6,9 @@ import org.testng.annotations.Test;
 
 import com.qa.opencart.base.BaseTest;
 
+import io.qameta.allure.Epic;
+
+@Epic("EPIC-03 - CarT page behaviour and Validations ")
 public class CartInfoPageTest extends BaseTest {
 
 	@BeforeTest

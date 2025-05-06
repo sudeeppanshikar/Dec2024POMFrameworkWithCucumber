@@ -6,6 +6,8 @@ import org.testng.annotations.Test;
 import static com.qa.opencart.constants.AppConstants.*;
 import com.qa.opencart.base.BaseTest;
 
+import io.qameta.allure.Epic;
+@Epic("EPIC-06 - Searching Functionality ")
 public class SearchTest extends BaseTest {
 
 	@BeforeClass

@@ -12,6 +12,9 @@ import org.testng.Assert;
 
 import com.qa.opencart.base.BaseTest;
 
+import io.qameta.allure.Epic;
+
+@Epic("EPIC-04 - Register page behaviour and Validations ")
 public class RegisterPageTest extends BaseTest {
 
 	@BeforeClass
