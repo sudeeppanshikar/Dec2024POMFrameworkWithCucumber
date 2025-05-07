@@ -1,20 +1,14 @@
 package com.qa.opencart.pages;
 
-import java.time.Duration;
-import java.time.LocalDateTime;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.LocalTime;
-import java.util.List;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class RoughPage {
 
@@ -22,25 +16,49 @@ public class RoughPage {
 	static JavascriptExecutor js;
 	static WebElement ele;
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, MalformedURLException {
 
-		ChromeOptions co = new ChromeOptions();
+		
+		
+		 String remoteUrl = "http://localhost:4444";
 
-		System.out.println(generateRandomEmailid());
+	        // Set desired capabilities
+	     //   DesiredCapabilities capabilities = new DesiredCapabilities();
+	        //capabilities.setBrowserName("chrome");
+	       // capabilities.setPlatform(Platform.ANY);  // or specify LINUX, WINDOWS, etc.
+		 
+	        // Initialize Remote WebDriver
+		 ChromeOptions co = new ChromeOptions();
+		 co.setCapability("browserName", "chrome");
+	        WebDriver driver = new RemoteWebDriver(new URL(remoteUrl), co);
 
-		co = co.addArguments("--incognito");
+	        // Basic navigation
+	        driver.get("https://www.google.com/");
+	        System.out.println("Title: " + driver.getTitle());
 
-		ThreadLocal<WebDriver> tldriver = new ThreadLocal<WebDriver>();
-
-		tldriver.set(new ChromeDriver(co));
-
-		driver = tldriver.get();
-
-		tldriver.get().get(null);
+	        // Cleanup
+	       // driver.quit();
 		
 		
 		/*
-		 * driver = new ChromeDriver(); js = (JavascriptExecutor) driver;
+		 * ChromeOptions co = new ChromeOptions();
+		 * 
+		 * System.out.println(generateRandomEmailid());
+		 * 
+		 * co = co.addArguments("--incognito");
+		 * 
+		 * ThreadLocal<WebDriver> tldriver = new ThreadLocal<WebDriver>();
+		 * 
+		 * tldriver.set(new ChromeDriver(co));
+		 * 
+		 * driver = tldriver.get();
+		 * 
+		 * tldriver.get().get(null);
+		 */
+		
+		/*
+		 * driver = new ChromeDriver(); 
+		 * js = (JavascriptExecutor) driver;
 		 */
 
 		// List<WebElement> removeFromCart;
