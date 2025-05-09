@@ -25,7 +25,7 @@ public class AccountPageTest extends BaseTest {
 
 	}
 
-	@Test
+	@Test	
 	public void acctPageTittleTest() {
 
 		String acttitle = accountpage.getaccountpageTittle();

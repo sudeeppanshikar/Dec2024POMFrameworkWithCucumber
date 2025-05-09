@@ -37,7 +37,7 @@ public class RoughPage {
 	        System.out.println("Title: " + driver.getTitle());
 
 	        // Cleanup
-	       // driver.quit();
+	        driver.quit();
 		
 		
 		/*

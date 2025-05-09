@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
@@ -12,7 +14,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.qa.opencart.constants.AppConstants;
 import com.qa.opencart.exceptions.BrowserExceptions;
@@ -20,18 +24,16 @@ import com.qa.opencart.exceptions.FrameworkException;
 
 import io.qameta.allure.Step;
 
-
-
 public class DriverFactory {
 
 	WebDriver driver;
 	Properties prop;
 	OptionsManager optionsManager;
-	
-	public static ThreadLocal<WebDriver> tlDriver= new ThreadLocal<WebDriver>();
+
+	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
 
 	public static String highlight;
-	
+
 	public static final Logger log = LogManager.getLogger(DriverFactory.class);
 
 	@Step("Intialized properties are passing to this method and properties are : {0}")
@@ -41,17 +43,22 @@ public class DriverFactory {
 		optionsManager = new OptionsManager(prop);
 		highlight = prop.getProperty("highlight");
 
-		log.info("Browser will be launched :" +browser);
-		log.info("Properties file are : " +prop);
-		
+		log.info("Browser will be launched :" + browser);
+		log.info("Properties file are : " + prop);
+
 		switch (browser.trim().toLowerCase()) {
 		case "chrome":
+
+			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
+				initRemoteBrowser();
+			}else {
 			tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
-		//	driver = new ChromeDriver(optionsManager.getChromeOptions());
+			}
+			// driver = new ChromeDriver(optionsManager.getChromeOptions());
 			break;
 		case "firefox":
 			tlDriver.set(new FirefoxDriver(optionsManager.getFireFoxOptions()));
-			//driver = new FirefoxDriver(optionsManager.getFireFoxOptions());
+			// driver = new FirefoxDriver(optionsManager.getFireFoxOptions());
 			break;
 
 		default:
@@ -62,21 +69,39 @@ public class DriverFactory {
 		return getDriver();
 
 	}
-	
+
+	private WebDriver initRemoteBrowser() {
+		ChromeOptions co = new ChromeOptions();
+		co.setCapability("browserName", "chrome");
+		try {
+
+			tlDriver.set(new RemoteWebDriver(new URL(prop.getProperty("remoteUrl")), co));
+
+			// WebDriver driver = new RemoteWebDriver(new
+			// URL(prop.getProperty("remoteUrl")), co);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return getDriver();
+	}
 
 	/**
-	 * generate local thread  copy from the thread local method
-	 * @return 
+	 * generate local thread copy from the thread local method
+	 * 
+	 * @return
 	 *
 	 */
-	
+
 	public static WebDriver getDriver() {
-		return 	tlDriver.get();
-	
+		return tlDriver.get();
+
 	}
-	
+
 	@Step("Receivec the URL from properties file for login {0}")
 	public void launchURL(Properties prop) {
+
 		String url = prop.getProperty("URL");
 		nullCheck(url);
 		lengthCheck(url);
@@ -164,19 +189,18 @@ public class DriverFactory {
 
 		return prop;
 	}
-	
+
 	/**
 	 * Screenshot
-	 * @return 
+	 * 
+	 * @return
 	 *
 	 */
-	
+
 	public static File getScreenShotFile() {
-		
-		File  srcFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
+
+		File srcFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
 		return srcFile;
 	}
-	
-	
 
 }
