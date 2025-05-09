@@ -1,5 +1,6 @@
 package com.qa.opencart.pages;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalTime;
@@ -8,6 +9,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class RoughPage {
@@ -17,27 +21,43 @@ public class RoughPage {
 	static WebElement ele;
 
 	public static void main(String[] args) throws InterruptedException, MalformedURLException {
+		//System.setProperty(FirefoxDriver.SystemProperty.BROWSER_PROFILE, "/tmp/firefox.log");
 
+
+		/*
+		 * WebDriver driver = new FirefoxDriver();
+		 * 
+		 * driver.get("https://www.google.com/");
+		 */
 		
 		
-		 String remoteUrl = "http://localhost:4444";
+		
+		
+		 String remoteUrl = "http://localhost:4444"; 
 
-	        // Set desired capabilities
-	     //   DesiredCapabilities capabilities = new DesiredCapabilities();
-	        //capabilities.setBrowserName("chrome");
-	       // capabilities.setPlatform(Platform.ANY);  // or specify LINUX, WINDOWS, etc.
+	 
+	     
+	      
 		 
 	        // Initialize Remote WebDriver
-		 ChromeOptions co = new ChromeOptions();
-		 co.setCapability("browserName", "chrome");
-	        WebDriver driver = new RemoteWebDriver(new URL(remoteUrl), co);
+			
+			  ChromeOptions co = new ChromeOptions(); 
+//			  co.setCapability("browserName", "chrome"); 
+		 
+		 
+		// FirefoxOptions fo = new FirefoxOptions();
+	
+		 
+	//	 fo.setCapability("browsername", "fireox");
+			  WebDriver driver = new RemoteWebDriver(new URL(remoteUrl), co);
+			 
 
-	        // Basic navigation
-	        driver.get("https://www.google.com/");
-	        System.out.println("Title: " + driver.getTitle());
+	 		
+			  driver.get("https://www.google.com/"); System.out.println("Title: " + driver.getTitle());
+			 
 
 	        // Cleanup
-	        driver.quit();
+	      driver.quit();
 		
 		
 		/*

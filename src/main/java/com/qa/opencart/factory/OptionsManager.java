@@ -27,6 +27,13 @@ public class OptionsManager {
 			co.addArguments("--incognito");
 
 		}
+		if (Boolean.parseBoolean(prop.getProperty("remote"))) {
+
+			return co;
+
+		}
+		
+		
 
 		return co;
 	}
@@ -38,6 +45,12 @@ public class OptionsManager {
 
 			if (Boolean.parseBoolean(prop.getProperty("incognito"))) {
 				fo.addArguments("--incognito");
+			}
+			
+			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
+
+				return fo;
+
 			}
 
 		}

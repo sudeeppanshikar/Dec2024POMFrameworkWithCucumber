@@ -37,6 +37,7 @@ public class DriverFactory {
 	public static final Logger log = LogManager.getLogger(DriverFactory.class);
 
 	@Step("Intialized properties are passing to this method and properties are : {0}")
+
 	public WebDriver initBrowser(Properties prop) {
 
 		String browser = prop.getProperty("browser");
@@ -50,15 +51,18 @@ public class DriverFactory {
 		case "chrome":
 
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
-				initRemoteBrowser();
-			}else {
-			tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
+				initRemoteBrowser(browser);
+			} else {
+				tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
 			}
-			// driver = new ChromeDriver(optionsManager.getChromeOptions());
+
 			break;
 		case "firefox":
-			tlDriver.set(new FirefoxDriver(optionsManager.getFireFoxOptions()));
-			// driver = new FirefoxDriver(optionsManager.getFireFoxOptions());
+			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
+				initRemoteBrowser(browser);
+			} else {
+				tlDriver.set(new FirefoxDriver(optionsManager.getFireFoxOptions()));
+			}
 			break;
 
 		default:
@@ -70,21 +74,36 @@ public class DriverFactory {
 
 	}
 
-	private WebDriver initRemoteBrowser() {
-		ChromeOptions co = new ChromeOptions();
-		co.setCapability("browserName", "chrome");
+	/**
+	 * Launch the remote webdriver from Selenium grid
+	 *
+	 */
+
+	private void initRemoteBrowser(String browser) {
 		try {
+			switch (browser.trim().toLowerCase()) {
+			case "chrome":
 
-			tlDriver.set(new RemoteWebDriver(new URL(prop.getProperty("remoteUrl")), co));
+				tlDriver.set(
+						new RemoteWebDriver(new URL(prop.getProperty("remoteUrl")), optionsManager.getChromeOptions()));
 
-			// WebDriver driver = new RemoteWebDriver(new
-			// URL(prop.getProperty("remoteUrl")), co);
+				break;
+
+			case "firefox":
+
+				tlDriver.set(new RemoteWebDriver(new URL(prop.getProperty("remoteUrl")),
+						optionsManager.getFireFoxOptions()));
+
+				break;
+
+			default:
+				break;
+			}
+
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return getDriver();
 	}
 
 	/**
@@ -101,7 +120,7 @@ public class DriverFactory {
 
 	@Step("Receivec the URL from properties file for login {0}")
 	public void launchURL(Properties prop) {
-
+		System.out.println(prop.getProperty("URL"));
 		String url = prop.getProperty("URL");
 		nullCheck(url);
 		lengthCheck(url);
