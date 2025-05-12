@@ -75,7 +75,7 @@ public class DriverFactory {
 	}
 
 	/**
-	 * Launch the remote webdriver from Selenium grid
+	 * Launch the remote web driver from Selenium grid
 	 *
 	 */
 
@@ -97,7 +97,8 @@ public class DriverFactory {
 				break;
 
 			default:
-				break;
+				throw new BrowserExceptions("Please enter the correct browser name");
+				
 			}
 
 		} catch (MalformedURLException e) {

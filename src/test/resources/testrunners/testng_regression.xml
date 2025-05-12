@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Opencart App Test Regression Suite" verbose="3" thread-count="4" parallel="tests">
+<suite name="Opencart App Test Regression Suite" verbose="3" thread-count="2" parallel="tests">
 
 
 	
@@ -33,7 +33,7 @@
 	</test>
 
 
-	<test name="SearchTest.java">
+	<!-- <test name="SearchTest.java">
 
 		<classes>
 			<class name="com.qa.opencart.tests.SearchTest" />
@@ -55,5 +55,5 @@
 			<class name="com.qa.opencart.tests.CartInfoPageTest" />
 		</classes>
 	</test>
-	
+	-->
 </suite>

@@ -82,6 +82,8 @@ public class ProductInfoPage {
 		return productmap;
 
 	}
+	
+	
 
 	private void getProductPriceDetails() {
 
@@ -96,6 +98,13 @@ public class ProductInfoPage {
 		productmap.put("ProductPriceWithTax", productPriceWithTax);
 
 	}
+	
+	/*
+	 * Brand: Apple 
+	 * Product Code: Product 16 
+	 * Reward Points: 600 
+	 * Availability: In Stock
+	 */
 
 	private void getProductMetaDataDetails() {
 
