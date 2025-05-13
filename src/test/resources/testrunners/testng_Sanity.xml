@@ -24,7 +24,7 @@
 			<class name="com.qa.opencart.tests.AccountPageTest" />
 		</classes>
 	</test>
-
+	
 	<test name="Register Page test">
 
 		<classes>
