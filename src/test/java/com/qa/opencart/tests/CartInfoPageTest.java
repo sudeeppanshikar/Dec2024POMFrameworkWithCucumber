@@ -2,6 +2,7 @@ package com.qa.opencart.tests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.qa.opencart.base.BaseTest;
@@ -19,7 +20,7 @@ public class CartInfoPageTest extends BaseTest {
 
 	@Test(priority = 2)
 	public void checkoutButtonExistTest() {
-		
+
 		String productName = "MacBook Pro";
 		searchrespage = accountpage.doSearch("macbook");
 		prodinfopage = searchrespage.selectProduct(productName);
@@ -30,5 +31,43 @@ public class CartInfoPageTest extends BaseTest {
 		Assert.assertTrue(cartinfopage.checkoutButtonExist());
 
 	}
+
+	@DataProvider
+	public Object[][] selectedProductGetAddedtestData() {
+		return new Object[][] { { "macbook", "MacBook Pro" } };
+	}
+
+	@Test(dataProvider = "selectedProductGetAddedtestData")
+	public void selectedProductGetAddedTest(String searchProduct, String productName) {
+
+		searchrespage = accountpage.doSearch(searchProduct);
+		prodinfopage = searchrespage.selectProduct(productName);
+		prodinfopage.removeItemsFromCartFun();
+		prodinfopage.addItemToCart(false);
+		cartinfopage = prodinfopage.navigateShoppingCartPage();
+		String actualProduct = cartinfopage.getProductsAddedToCart(productName);
+
+		Assert.assertEquals(actualProduct, productName);
+
+	}
+	
+	@DataProvider
+	public Object[][] productAvailibilitytestData() {
+		return new Object[][] { { "macbook", "MacBook" },
+			{ "macbook", "MacBook Pro"}	};
+	}
+	@Test(dataProvider = "productAvailibilitytestData")
+	public void productAvailibilityTest(String searchProduct, String productName) {
+		
+		searchrespage = accountpage.doSearch(searchProduct);
+		prodinfopage = searchrespage.selectProduct(productName);
+		prodinfopage.removeItemsFromCartFun();
+		prodinfopage.addItemToCart(false);
+		cartinfopage = prodinfopage.navigateShoppingCartPage();
+		Boolean actualStatus = cartinfopage.getProductAvailibility(productName);
+		Assert.assertTrue(actualStatus);
+		
+	}
+	
 
 }
