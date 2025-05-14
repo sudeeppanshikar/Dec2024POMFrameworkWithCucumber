@@ -45,7 +45,7 @@ public class AccountPageTest extends BaseTest {
 	//Adding new function
 	
 	@Test
-	public void acctPageHeadersTest() {
+	public void acctPageHeadersTest() {	
 		List<String> accPageHeader = accountpage.getAccountPageHeader();
 		Assert.assertTrue(accPageHeader.equals(expected_account_page_header));
 

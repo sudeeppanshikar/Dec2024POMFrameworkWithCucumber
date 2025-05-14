@@ -3,9 +3,7 @@ pipeline {
    agent any
    
    
-       tools {
-        jdk 'jdk'  // This name must match the one configured in Jenkins Global Tool Configuration
-    }
+   
    stages {
       
       stage("build") {
