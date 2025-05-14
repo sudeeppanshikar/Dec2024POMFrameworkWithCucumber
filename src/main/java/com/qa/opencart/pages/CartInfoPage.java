@@ -60,7 +60,6 @@ public class CartInfoPage {
 		} catch (NoSuchElementException e) {
 
 		}
-
 		return true;
 
 	}
