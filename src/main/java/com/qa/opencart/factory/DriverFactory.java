@@ -192,7 +192,7 @@ public class DriverFactory {
 					
 				case "stage":
 					System.out.println("env is Stage , hence running the test using the Stage properties ");
-					ip = new FileInputStream("./src/test/resources/config/com.properties");
+					ip = new FileInputStream("./src/test/resources/config/config.properties");
 
 					break;
 
