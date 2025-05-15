@@ -54,13 +54,7 @@ pipeline {
                sh "mvn clean install -DsuiteXMLFile=src/test/resources/testrunners/testng_Sanity.xml -Denv=stage"
            
          }
-         post {
-            failure {
-               script {
-                  currentBuild.result = 'FAILURE'
-               }
-            }
-         }
+
       }
       
       stage('Publish Allure Reports') {
