@@ -49,10 +49,10 @@ pipeline {
             }
          }
          steps {
-             {
+           
                git branch: 'main', url: 'https://github.com/sudeeppanshikar/Dec2024POMFramework.git'
                sh "mvn clean install -DsuiteXMLFile=src/test/resources/testrunners/testng_Sanity.xml -Denv=stage"
-            }
+           
          }
          post {
             failure {
