@@ -111,5 +111,13 @@ pipeline {
       
    }
    
+   post {
+    always {
+        script {
+            echo "Build result is: ${currentBuild.result}"
+        }
+    }
+}
+   
    
 }
