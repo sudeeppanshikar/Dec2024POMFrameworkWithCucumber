@@ -1,7 +1,7 @@
 package com.qa.opencart.pages;
 
 import static com.qa.opencart.constants.AppConstants.CART_INFO_FRACTIONAL_URL;
-import static com.qa.opencart.constants.AppConstants.DEFAULT_TIME_OUT;
+import static com.qa.opencart.constants.AppConstants.*;
 
 import java.util.List;
 
@@ -60,10 +60,40 @@ public class CartInfoPage {
 		} catch (NoSuchElementException e) {
 
 		}
-		
-		
+
 		return true;
 
+	}
+
+	public String getProductQuantityUpdate(String productName, String value) {
+
+		By quantityBox = By.xpath(
+				"((//a[text()='" + productName + "'])[2]//parent::td//following-sibling::td)[2]//input[@type='text']");
+		By totalPrice = By.xpath("((//a[text()='" + productName + "'])[2]//parent::td//following-sibling::td)[4]");
+		By refreshButton = By.xpath(
+				"(//a[text()='" + productName + "'])[2]//parent::td//following-sibling::td//button[@type='submit']");
+		By quantityUpdateSuccessMessage = By.xpath("//div[contains(@class,'alert-success')]");
+
+		WebElement quantityBox_Ele = elementUtil.waitForElementVisible(quantityBox, DEFAULT_TIME_OUT);
+
+		quantityBox_Ele.clear();
+		quantityBox_Ele.sendKeys(value);
+
+		elementUtil.doClick(refreshButton);
+
+		/*
+		 * String successMessage =
+		 * elementUtil.waitForElementPresence(quantityUpdateSuccessMessage,
+		 * MED_TIME_OUT) .getText();
+		 */
+		/*
+		 * if (successMessage.contains("Success")) {
+		 * 
+		 * return elementUtil.waitForElementVisible(totalPrice,
+		 * DEFAULT_TIME_OUT).getText(); }
+		 */
+
+		 return elementUtil.waitForElementVisible(totalPrice, DEFAULT_TIME_OUT).getText();
 	}
 
 }
