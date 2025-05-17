@@ -143,10 +143,16 @@ public class ProductInfoPage {
 		elementUtil.doClick(cartButton);
 
 		for (int i = 0; i <= removeFromCart.size() - 1; i++) {
+			
+			WebElement cartbuttonElement = elementUtil.waitForElementVisible(cartButton, DEFAULT_TIME_OUT);
+			cartbuttonElement.click();
 
-			elementUtil.clickWhenReady(cartButton, DEFAULT_TIME_OUT);
+			//elementUtil.clickWhenReady(cartButton, DEFAULT_TIME_OUT);
+			
+			WebElement removeItemFromCartElement = elementUtil.waitForElementVisible(removeItemsFromCart, DEFAULT_TIME_OUT);
+			removeItemFromCartElement.click();
 
-			elementUtil.clickWhenReady(removeItemFromCart, DEFAULT_TIME_OUT);
+		//	elementUtil.clickWhenReady(removeItemFromCart, DEFAULT_TIME_OUT);
 
 		}
 	}

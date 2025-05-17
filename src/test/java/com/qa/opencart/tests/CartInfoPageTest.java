@@ -76,7 +76,7 @@ public class CartInfoPageTest extends BaseTest {
 		return new Object[][] { { "macbook", "MacBook", "$1,204.00" }, { "macbook", "MacBook Pro", "$4,000.00" } };
 	}
 
-	@Test(dataProvider = "productQuantityUpdatedTestData")
+	@Test(priority = Integer.MAX_VALUE-1 ,dataProvider = "productQuantityUpdatedTestData")
 	public void productQuantityUpdatedTest(String searchProduct, String productName, String excpectedPrice) {
 		searchrespage = accountpage.doSearch(searchProduct);
 		prodinfopage = searchrespage.selectProduct(productName);
@@ -94,7 +94,7 @@ public class CartInfoPageTest extends BaseTest {
 		return new Object[][] { { "macbook", "MacBook", "$1,204.00", "MacBook Pro", "$4,000.00" }, };
 	}
 
-	@Test(dataProvider = "multipleproductQuantityUpdatedTestData")
+	@Test(priority = Integer.MAX_VALUE,  dataProvider= "multipleproductQuantityUpdatedTestData")
 	public void multipleProductQuantityUpdatedTest(String searchProduct, String productName1, String excpectedPrice1,
 			String productName2, String excpectedPrice2) {
 		searchrespage = accountpage.doSearch(searchProduct);

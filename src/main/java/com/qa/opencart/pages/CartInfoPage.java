@@ -74,7 +74,7 @@ public class CartInfoPage {
 				"(//a[text()='" + productName + "'])[2]//parent::td//following-sibling::td//button[@type='submit']");
 		By quantityUpdateSuccessMessage = By.xpath("//div[contains(@class,'alert-success')]");
 
-		WebElement quantityBox_Ele = elementUtil.waitForElementVisible(quantityBox, DEFAULT_TIME_OUT);
+		WebElement quantityBox_Ele = elementUtil.waitForElementVisible(quantityBox, MED_TIME_OUT);
 
 		quantityBox_Ele.clear();
 		quantityBox_Ele.sendKeys(value);
@@ -93,7 +93,7 @@ public class CartInfoPage {
 		 * DEFAULT_TIME_OUT).getText(); }
 		 */
 
-		 return elementUtil.waitForElementVisible(totalPrice, DEFAULT_TIME_OUT).getText();
+		 return elementUtil.waitForElementVisible(totalPrice, MED_TIME_OUT).getText();
 	}
 
 }
