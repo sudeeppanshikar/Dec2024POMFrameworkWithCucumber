@@ -2,10 +2,10 @@ pipeline {
    
    agent any
    
-     tools{
-        maven 'maven'
-        jdk 'jdk' 
-        }
+   tools {
+      maven 'maven'
+      jdk 'jdk'
+   }
    
    stages {
       
@@ -43,18 +43,14 @@ pipeline {
       }
       
       stage('Run Regression Automation Tests') {
-         when {
-            expression {
-               currentBuild.result == null || currentBuild.result == 'SUCCESS'
-            }
-         }
+         
          steps {
-           
-               git branch: 'main', url: 'https://github.com/sudeeppanshikar/Dec2024POMFramework.git'
-               sh "mvn clean install -DsuiteXMLFile=src/test/resources/testrunners/testng_regression.xml -Denv=stage"
-           
+            
+            git branch: 'main', url: 'https://github.com/sudeeppanshikar/Dec2024POMFramework.git'
+            sh "mvn clean install -DsuiteXMLFile=src/test/resources/testrunners/testng_regression.xml -Denv=stage"
+            
          }
-
+         
       }
       
       stage('Publish Allure Reports') {
@@ -106,12 +102,12 @@ pipeline {
    }
    
    post {
-    always {
-        script {
+      always {
+         script {
             echo "Build result is: ${currentBuild.result}"
-        }
-    }
-}
+         }
+      }
+   }
    
    
 }
