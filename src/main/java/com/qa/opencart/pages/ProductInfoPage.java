@@ -84,7 +84,6 @@ public class ProductInfoPage {
 	}
 	
 	
-
 	private void getProductPriceDetails() {
 
 		List<WebElement> pricelist = elementUtil.waitForElementsVisibleBy(productPriceDetails, DEFAULT_TIME_OUT);
