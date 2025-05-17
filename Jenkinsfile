@@ -47,13 +47,13 @@ pipeline {
          steps {
             
             git branch: 'main', url: 'https://github.com/sudeeppanshikar/Dec2024POMFramework.git'
-            sh "mvn clean install -DsuiteXMLFile=src/test/resources/testrunners/testng_regression.xml -Denv=stage"
+            sh "mvn clean install -DsuiteXmlFile=src/test/resources/testrunners/testng_regression.xml -Denv=stage"
             
          }
          
       }
       
-      stage('Publish Allure Reports') {
+      stage('Publish Allure Reports') {	
          steps {
             script {
                allure([
