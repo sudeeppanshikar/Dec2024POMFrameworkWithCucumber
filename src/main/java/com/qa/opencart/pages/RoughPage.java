@@ -26,15 +26,17 @@ public class RoughPage {
 		//System.setProperty(FirefoxDriver.SystemProperty.BROWSER_PROFILE, "/tmp/firefox.log");
 
 		
-		WebDriver driver = new ChromeDriver();
+		//WebDriver driver = new ChromeDriver();
 		
-		driver.get("https://naveenautomationlabs.com/opencart/index.php?route=account/login");
-		
-		
-		String text = driver.findElement(By.xpath("//h2")).getText();
-		
-	System.out.println(text);
-		
+		/*
+		 * driver.get(
+		 * "https://naveenautomationlabs.com/opencart/index.php?route=account/login");
+		 * 
+		 * 
+		 * String text = driver.findElement(By.xpath("//h2")).getText();
+		 * 
+		 * System.out.println(text);
+		 */
 
 		/*
 		 * WebDriver driver = new FirefoxDriver();
@@ -45,7 +47,7 @@ public class RoughPage {
 		
 		
 		
-		/* String remoteUrl = "http://localhost:4444"; */
+		 String remoteUrl = "http://localhost:4444";
 
 	 
 	     
@@ -53,10 +55,12 @@ public class RoughPage {
 		 
 	        // Initialize Remote WebDriver
 			
-			/*
-			 * ChromeOptions co = new ChromeOptions(); // co.setCapability("browserName",
-			 * "chrome");
-			 */		 
+			
+			  ChromeOptions co = new ChromeOptions(); // co.setCapability("browserName",  "chrome");
+			   driver = new RemoteWebDriver(new URL(remoteUrl), co);
+			   System.out.println(co);
+			 		 
+			   driver.quit();
 		 
 		// FirefoxOptions fo = new FirefoxOptions();
 	

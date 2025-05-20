@@ -53,7 +53,9 @@ public class DriverFactory {
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
 				initRemoteBrowser(browser);
 			} else {
+				
 				tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
+			
 			}
 
 			break;
