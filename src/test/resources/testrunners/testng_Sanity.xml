@@ -13,7 +13,7 @@
 
 
 	<test name="Login Page Test">
-		<classes>
+		<classes>	
 			<class name="com.qa.opencart.tests.LoginPageTest" />
 		</classes>
 	</test>

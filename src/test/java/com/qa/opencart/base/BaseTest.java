@@ -35,17 +35,18 @@ public class BaseTest {
 	WebDriver driver;
 	protected Properties prop;
 	@Step("Intializing the Driver through Driver Factory")
-	@Parameters  ("browser")
+	@Parameters  ({"browser","browserversion"})
 	
 	@BeforeTest
-	public void setup(@Optional("chrome")String browserName) {
+	public void setup(@Optional String browserName,@Optional String browserversionName) {
 
 		
 		df = new DriverFactory();
 		prop = df.initprop();
 		
-		if (!browserName.equals(null)) {
+		if (browserName!=null) {
 		prop.setProperty("browser", browserName);
+		prop.setProperty("browserversion", browserversionName);
 		}
 		driver = df.initBrowser(prop);
 		df.launchURL(prop);

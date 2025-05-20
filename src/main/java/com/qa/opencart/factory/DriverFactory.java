@@ -53,9 +53,9 @@ public class DriverFactory {
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
 				initRemoteBrowser(browser);
 			} else {
-				
+
 				tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
-			
+
 			}
 
 			break;
@@ -69,7 +69,7 @@ public class DriverFactory {
 
 		default:
 			log.warn("Enter the correct browser");
-			throw new BrowserExceptions("Incorrect Brower");
+			throw new BrowserExceptions("Incorrect Browser");
 		}
 
 		return getDriver();
@@ -86,15 +86,33 @@ public class DriverFactory {
 			switch (browser.trim().toLowerCase()) {
 			case "chrome":
 
-				tlDriver.set(
-						new RemoteWebDriver(new URL(prop.getProperty("remoteUrl")), optionsManager.getChromeOptions()));
+				if (Boolean.parseBoolean(prop.getProperty("selenium_grid"))) {
+					tlDriver.set(
+
+							new RemoteWebDriver(new URL(prop.getProperty("remoteUrlgrid")),
+									optionsManager.getChromeOptions()));
+				}
+				if (Boolean.parseBoolean(prop.getProperty("selenoid"))) {
+
+					tlDriver.set(new RemoteWebDriver(new URL(prop.getProperty("remoteUrlselenoid")),
+							optionsManager.getChromeOptions()));
+				}
 
 				break;
 
 			case "firefox":
 
-				tlDriver.set(new RemoteWebDriver(new URL(prop.getProperty("remoteUrl")),
-						optionsManager.getFireFoxOptions()));
+				if (Boolean.parseBoolean(prop.getProperty("selenium_grid"))) {
+					tlDriver.set(
+
+							new RemoteWebDriver(new URL(prop.getProperty("remoteUrlgrid")),
+									optionsManager.getFireFoxOptions()));
+				}
+				if (Boolean.parseBoolean(prop.getProperty("selenoid"))) {
+
+					tlDriver.set(new RemoteWebDriver(new URL(prop.getProperty("remoteUrlselenoid")),
+							optionsManager.getFireFoxOptions()));
+				}
 
 				break;
 
@@ -202,7 +220,7 @@ public class DriverFactory {
 
 					throw new FrameworkException("====Incorrect ENV varaiable=======");
 				}
-				
+
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
