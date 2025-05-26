@@ -10,11 +10,11 @@
 		<listener class-name="com.qa.opencart.listeners.TestAllureListener" />
 		
 	</listeners>
--->
+-->	
 
 	<test name="Login Page Test">
-<parameter name="browser" value="firefox" /> 
-<parameter name="browserversion" value="105.0" />
+ <parameter name="browser" value="chrome" /> 
+<parameter name="browserversion" value="123.0" />	
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
 		</classes>

@@ -29,12 +29,15 @@ public class OptionsManager {
 			co.addArguments("--incognito");
 
 		}
+		
+		if(Boolean.parseBoolean(prop.getProperty("remote"))) {
+
 		if (Boolean.parseBoolean(prop.getProperty("selenium_grid"))) {
 
 			return co;
 
 		}
-		
+
 		if (Boolean.parseBoolean(prop.getProperty("selenoid"))) {
 
 			co.setCapability("browserName", "chrome");
@@ -46,12 +49,11 @@ public class OptionsManager {
 			selenoidOptions.put("name", prop.getProperty("testname"));
 			co.setCapability("selenoid:options", selenoidOptions);
 		}
-		
-		
 
+		
+	}
 		return co;
 	}
-
 	public FirefoxOptions getFireFoxOptions() {
 		FirefoxOptions fo = new FirefoxOptions();
 		if (Boolean.parseBoolean(prop.getProperty("headless"))) {
@@ -60,17 +62,16 @@ public class OptionsManager {
 			if (Boolean.parseBoolean(prop.getProperty("incognito"))) {
 				fo.addArguments("--incognito");
 			}
-			
+
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
 
 				return fo;
 
 			}
-			
-			
+
 			if (Boolean.parseBoolean(prop.getProperty("selenoid"))) {
 
-				fo.setCapability("browserName", "chrome");
+				fo.setCapability("browserName", "firefox");
 				fo.setBrowserVersion(prop.getProperty("browserversion").trim());
 
 				Map<String, Object> selenoidOptions = new HashMap<>();

@@ -72,6 +72,7 @@ public class CartInfoPage {
 		By totalPrice = By.xpath("((//a[text()='" + productName + "'])[2]//parent::td//following-sibling::td)[4]");
 		By refreshButton = By.xpath(
 				"(//a[text()='" + productName + "'])[2]//parent::td//following-sibling::td//button[@type='submit']");
+
 		By quantityUpdateSuccessMessage = By.xpath("//div[contains(@class,'alert-success')]");
 
 		WebElement quantityBox_Ele = elementUtil.waitForElementVisible(quantityBox, MED_TIME_OUT);
@@ -93,7 +94,17 @@ public class CartInfoPage {
 		 * DEFAULT_TIME_OUT).getText(); }
 		 */
 
-		 return elementUtil.waitForElementVisible(totalPrice, MED_TIME_OUT).getText();
+		return elementUtil.waitForElementVisible(totalPrice, MED_TIME_OUT).getText();
+	}
+
+	public String getRewardsPoint(String productName) {
+
+		By rewardsPoint_locator = By.xpath("(//a[text()='" + productName + "'])[2]//parent::td/small");
+		String rewardsPoint_value = elementUtil.waitForElementVisible(rewardsPoint_locator, DEFAULT_TIME_OUT).getText();
+		String rewardsPoint_split[] = rewardsPoint_value.split(":");
+
+		return rewardsPoint_split[1].trim();
+
 	}
 
 }

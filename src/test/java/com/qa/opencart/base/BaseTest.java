@@ -22,7 +22,6 @@ import com.qa.opencart.pages.SearchResultsPage;
 
 import io.qameta.allure.Step;
 
-
 public class BaseTest {
 
 	DriverFactory df;
@@ -34,19 +33,19 @@ public class BaseTest {
 	protected CartInfoPage cartinfopage;
 	WebDriver driver;
 	protected Properties prop;
-	@Step("Intializing the Driver through Driver Factory")
-	@Parameters  ({"browser","browserversion"})
-	
-	@BeforeTest
-	public void setup(@Optional String browserName,@Optional String browserversionName) {
 
-		
+	@Step("Intializing the Driver through Driver Factory")
+	@Parameters({ "browser", "browserversion" })
+
+	@BeforeTest
+	public void setup(@Optional String browserName, @Optional String browserversionName) {
+
 		df = new DriverFactory();
 		prop = df.initprop();
-		
-		if (browserName!=null) {
-		prop.setProperty("browser", browserName);
-		prop.setProperty("browserversion", browserversionName);
+
+		if (browserName != null) {
+			prop.setProperty("browser", browserName);
+			prop.setProperty("browserversion", browserversionName);
 		}
 		driver = df.initBrowser(prop);
 		df.launchURL(prop);
@@ -56,6 +55,7 @@ public class BaseTest {
 
 	@AfterMethod // will be runnig after each @Test method
 	public void attachScreeshot(ITestResult result) {
+
 		if (!result.isSuccess()) {// only for faiure test case
 			ChainTestListener.embed(DriverFactory.getScreenShotFile(), "image/png");
 
@@ -65,7 +65,7 @@ public class BaseTest {
 	@AfterTest
 	public void teardown() {
 
-df.driverQuit();
+		df.driverQuit();
 	}
 
 }

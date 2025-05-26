@@ -25,7 +25,7 @@ public class AccountPageTest extends BaseTest {
 
 	}
 
-	@Test	
+	@Test
 	public void acctPageTittleTest() {
 
 		String acttitle = accountpage.getaccountpageTittle();
@@ -42,10 +42,10 @@ public class AccountPageTest extends BaseTest {
 
 	}
 
-	//Adding new function
-	
+	// Adding new function
+
 	@Test
-	public void acctPageHeadersTest() {	
+	public void acctPageHeadersTest() {
 		List<String> accPageHeader = accountpage.getAccountPageHeader();
 		Assert.assertTrue(accPageHeader.equals(expected_account_page_header));
 

@@ -55,5 +55,5 @@
 			<class name="com.qa.opencart.tests.CartInfoPageTest" />
 		</classes>
 	</test>
-	
+
 </suite>

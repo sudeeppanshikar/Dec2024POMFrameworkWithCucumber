@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import com.qa.opencart.base.BaseTest;
+import com.qa.opencart.pages.ProductInfoPage;
 
 import io.qameta.allure.Epic;
 
@@ -76,7 +77,7 @@ public class CartInfoPageTest extends BaseTest {
 		return new Object[][] { { "macbook", "MacBook", "$1,204.00" }, { "macbook", "MacBook Pro", "$4,000.00" } };
 	}
 
-	@Test(priority = Integer.MAX_VALUE-1 ,dataProvider = "productQuantityUpdatedTestData")
+	@Test(priority = Integer.MAX_VALUE - 1, dataProvider = "productQuantityUpdatedTestData")
 	public void productQuantityUpdatedTest(String searchProduct, String productName, String excpectedPrice) {
 		searchrespage = accountpage.doSearch(searchProduct);
 		prodinfopage = searchrespage.selectProduct(productName);
@@ -94,7 +95,7 @@ public class CartInfoPageTest extends BaseTest {
 		return new Object[][] { { "macbook", "MacBook", "$1,204.00", "MacBook Pro", "$4,000.00" }, };
 	}
 
-	@Test(priority = Integer.MAX_VALUE,  dataProvider= "multipleproductQuantityUpdatedTestData")
+	@Test(priority = Integer.MAX_VALUE, dataProvider = "multipleproductQuantityUpdatedTestData")
 	public void multipleProductQuantityUpdatedTest(String searchProduct, String productName1, String excpectedPrice1,
 			String productName2, String excpectedPrice2) {
 		searchrespage = accountpage.doSearch(searchProduct);
@@ -113,6 +114,25 @@ public class CartInfoPageTest extends BaseTest {
 
 		softassert.assertEquals(updatedPrice1, excpectedPrice1);
 		softassert.assertEquals(updatedPrice2, excpectedPrice2);
+
+	}
+
+	@DataProvider
+	public Object[][] rewardsPoiintTestData() {
+		return new Object[][] { { "macbook", "MacBook" ,"600"},
+				 { "macbook", "MacBook Pro","800"}  };
+	}
+
+	@Test(dataProvider = "rewardsPoiintTestData")
+	public void rewardsPointsTest(String serachProduct, String productName,String expectedRewardsPoint) {
+		searchrespage = accountpage.doSearch(serachProduct);
+		prodinfopage = searchrespage.selectProduct(productName);
+		prodinfopage.removeItemsFromCartFun();
+		prodinfopage.addItemToCart(false);
+		cartinfopage = prodinfopage.navigateShoppingCartPage();
+		String actualRewardsPoint = cartinfopage.getRewardsPoint(productName);
+		
+		Assert.assertEquals(expectedRewardsPoint, actualRewardsPoint);
 
 	}
 

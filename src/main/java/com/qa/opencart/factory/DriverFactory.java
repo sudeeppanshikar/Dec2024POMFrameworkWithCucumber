@@ -91,6 +91,8 @@ public class DriverFactory {
 
 							new RemoteWebDriver(new URL(prop.getProperty("remoteUrlgrid")),
 									optionsManager.getChromeOptions()));
+					break;
+				
 				}
 				if (Boolean.parseBoolean(prop.getProperty("selenoid"))) {
 
@@ -107,6 +109,7 @@ public class DriverFactory {
 
 							new RemoteWebDriver(new URL(prop.getProperty("remoteUrlgrid")),
 									optionsManager.getFireFoxOptions()));
+					
 				}
 				if (Boolean.parseBoolean(prop.getProperty("selenoid"))) {
 
@@ -212,7 +215,10 @@ public class DriverFactory {
 
 				case "stage":
 					System.out.println("env is Stage , hence running the test using the Stage properties ");
-					ip = new FileInputStream("./src/test/resources/config/config.properties");
+					ip = new FileInputStream("./src/tes <parameter name=\"browser\" value=\"chrome\" /> \n"
+							+ " <parameter name=\"browser\" value=\"chrome\" /> \n"
+							+ " <parameter name=\"browser\" value=\"chrome\" /> \n"
+							+ "t/resources/config/config.properties");
 
 					break;
 

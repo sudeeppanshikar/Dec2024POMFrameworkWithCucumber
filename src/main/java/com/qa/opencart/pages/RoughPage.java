@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalTime;
+import java.util.Arrays;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -26,6 +27,13 @@ public class RoughPage {
 		//System.setProperty(FirefoxDriver.SystemProperty.BROWSER_PROFILE, "/tmp/firefox.log");
 
 		
+		String st = "Reward Points: 600";
+		
+	String[]str =st.split(":");
+	
+	System.out.println(Arrays.toString(str));
+		
+		
 		//WebDriver driver = new ChromeDriver();
 		
 		/*
@@ -47,20 +55,22 @@ public class RoughPage {
 		
 		
 		
-		 String remoteUrl = "http://localhost:4444";
-
-	 
-	     
-	      
-		 
-	        // Initialize Remote WebDriver
-			
-			
-			  ChromeOptions co = new ChromeOptions(); // co.setCapability("browserName",  "chrome");
-			   driver = new RemoteWebDriver(new URL(remoteUrl), co);
-			   System.out.println(co);
-			 		 
-			   driver.quit();
+		/*
+		 * String remoteUrl = "http://localhost:4444";
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * // Initialize Remote WebDriver
+		 * 
+		 * 
+		 * ChromeOptions co = new ChromeOptions(); // co.setCapability("browserName",
+		 * "chrome"); driver = new RemoteWebDriver(new URL(remoteUrl), co);
+		 * System.out.println(co);
+		 * 
+		 * driver.quit();
+		 */
 		 
 		// FirefoxOptions fo = new FirefoxOptions();
 	
