@@ -1,6 +1,6 @@
 Feature: Account Page
 
-  @accountpage
+  @regression
   Scenario Outline: Search image and search product
     Given the user is in account page with the page title "My Account"
     When the user search for the product "<product_search>"
@@ -12,7 +12,7 @@ Feature: Account Page
       | samsung        | 2            |
       | Airtel         | 0            |
 
-
+  @regression
   Scenario: Verify the Account Page Header Test
     Given the user is in account page with the page title "My Account"
     When check for the account page header
@@ -22,7 +22,7 @@ Feature: Account Page
       | My Affiliate Account |
       | Newsletter           |
 
-  @accountpagenew
+  @regression
 Scenario: Verify the account page URL
   Given the user is in account page with the page title "My Account"
   When check for the account page URL

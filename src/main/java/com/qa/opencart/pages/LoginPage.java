@@ -23,7 +23,7 @@ public class LoginPage {
 
 	// Creating Locators for Login Page Class
 
-	private By emailid = By.id("input-email11");
+	private By emailid = By.id("input-email");
 	private By password = By.id("input-password");
 	private By forgottenPassword = By.linkText("Forgotten Password");
 	private By loginbutton = By.cssSelector("input.btn");

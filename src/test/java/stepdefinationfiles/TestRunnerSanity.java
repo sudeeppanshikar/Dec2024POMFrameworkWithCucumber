@@ -17,7 +17,7 @@ import org.testng.annotations.DataProvider;
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
         monochrome = true
 )
-public class TestRunner extends AbstractTestNGCucumberTests {
+public class TestRunnerSanity extends AbstractTestNGCucumberTests {
 
 
     @Override
