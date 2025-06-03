@@ -1,0 +1,4 @@
+$(document).ready(function() {
+CucumberHTML.timelineItems.pushArray([{"id":"fa8e11b8-de33-4804-b56c-dd92beeb5b05","feature":"Login Page Feature","scenario":"Check forgot password link existence","start":1748956093282,"group":16,"content":"","tags":"@smoke,","end":1748956099131,"className":"passed"},{"id":"c1d8fbe0-f002-44c2-995d-beb5d6e76d4e","feature":"Login Page Feature","scenario":"Login to application","start":1748956093280,"group":17,"content":"","tags":"@smoke,","end":1748956099154,"className":"failed"},{"id":"31e49f65-9c24-40d3-bc69-230e40280580","feature":"Login Page Feature","scenario":"Check login page title","start":1748956093278,"group":15,"content":"","tags":"@smoke,","end":1748956098957,"className":"passed"}]);
+CucumberHTML.timelineGroups.pushArray([{"id":15,"content":"Thread[TestNG-PoolService-1,5,main]"},{"id":16,"content":"Thread[TestNG-PoolService-2,5,main]"},{"id":17,"content":"Thread[TestNG-PoolService-3,5,main]"}]);
+});
