@@ -5,7 +5,10 @@ package stepdefinationfiles;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 /*import org.junit.runner.RunWith;*/
 import io.cucumber.testng.CucumberOptions;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 
 /*@RunWith(Cucumber.class)*/
@@ -19,10 +22,19 @@ import org.testng.annotations.DataProvider;
 )
 public class TestRunnerSanity extends AbstractTestNGCucumberTests {
 
-
+    @BeforeClass(alwaysRun = true)
+    @Parameters("browser")
+    public void setup( @Optional String browserName) {
+        if(browserName!=null) {
+            System.setProperty("browser", browserName);
+            System.out.println("Browser set in TestContext: " + browserName);
+        }
+    }
     @Override
     @DataProvider(parallel = true)
     public Object[][] scenarios() {
         return super.scenarios();
     }
+
+
 }

@@ -11,6 +11,8 @@ import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import java.io.ByteArrayInputStream;
 import java.util.Properties;
@@ -30,14 +32,24 @@ public class Hook {
 
     /*  @Step("Intializing the Driver through Driver Factory")*/
 
+    /*    @Parameters("browser")
+        public void setBrowser(@Optional String browserName){
+                   if (browserName != null) {
+                prop.setProperty("browser", browserName);
+            }
 
+        }*/
     @Before
     public void setup() {
 
         System.out.println("inside setup");
         df = new DriverFactory();
         prop = df.initprop();
-
+        String browserName = System.getProperty("browser");
+        System.out.println("browser name " + browserName);
+        if (browserName != null) {
+            prop.setProperty("browser", browserName);
+        }
         driver = df.initBrowser(prop);
         df.launchURL(prop);
         loginpage = new LoginPage(driver);
@@ -50,7 +62,7 @@ public class Hook {
     public void attachScreenshot(Scenario scenario) {
         if (scenario.isFailed()) {
             // Attach screenshot to Allure
-                Allure.addAttachment("Failed Screenshot",
+            Allure.addAttachment("Failed Screenshot",
                     new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
         }
 
@@ -60,6 +72,7 @@ public class Hook {
     @After
     public void teardown() {
         df.driverQuit();
+
     }
 
     public LoginPage getloginpage() {
