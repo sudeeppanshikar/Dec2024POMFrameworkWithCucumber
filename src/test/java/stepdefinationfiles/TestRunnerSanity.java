@@ -23,7 +23,7 @@ import org.testng.annotations.Parameters;
 public class TestRunnerSanity extends AbstractTestNGCucumberTests {
 
     @BeforeClass(alwaysRun = true)
-    @Parameters("browser")
+    @Parameters("browser1")
     public void setup( @Optional String browserName) {
         if(browserName!=null) {
             System.setProperty("browser", browserName);

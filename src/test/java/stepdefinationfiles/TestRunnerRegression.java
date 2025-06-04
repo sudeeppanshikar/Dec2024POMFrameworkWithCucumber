@@ -21,15 +21,13 @@ import org.testng.annotations.Parameters;
         monochrome = true
 )
 public class TestRunnerRegression extends AbstractTestNGCucumberTests {
-
-
     
     @BeforeClass(alwaysRun = true)
-    @Parameters("browser")
+    @Parameters("browser2")
     public void setup(@Optional String browserName) {
 
         if (browserName != null) {
-            System.setProperty("browser", "chrome");
+           System.setProperty("browser", browserName);
             System.out.println("Browser set in TestContext: " + browserName);
         }
     }
